@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1583933599 source:d:\std\tubes_std\listchild.cpp
+	"listChild.h"
+
+1583933599 d:\std\tubes_std\listchild.h
+
+1514140574 source:d:\std\tubes_std\main.cpp
+	<iostream>
+
