@@ -1,9 +1,23 @@
 # depslib dependency file v1.0
-1583933599 source:d:\std\tubes_std\listchild.cpp
+1584450188 source:d:\std\tubes_std\listchild.cpp
 	"listChild.h"
 
-1583933599 d:\std\tubes_std\listchild.h
-
-1514140574 source:d:\std\tubes_std\main.cpp
+1584450642 d:\std\tubes_std\listchild.h
 	<iostream>
+
+1584453381 source:d:\std\tubes_std\main.cpp
+	<iostream>
+	"listChild.h"
+	"listParent.h"
+
+1584453178 source:d:\std\tubes_std\listparent.cpp
+	"listParent.h"
+
+1584452039 d:\std\tubes_std\listparent.h
+	<iostream>
+
+1584173147 source:d:\std\tubes_std\listrelasi.cpp
+	"listRelasi.h"
+
+1584173149 d:\std\tubes_std\listrelasi.h
 
