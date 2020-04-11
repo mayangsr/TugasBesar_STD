@@ -21,3 +21,31 @@
 
 1584173149 d:\std\tubes_std\listrelasi.h
 
+1586318064 source:c:\users\azizah cahya\documents\github\tugasbesar_std\listparent.cpp
+	"listParent.h"
+
+1586318010 c:\users\azizah cahya\documents\github\tugasbesar_std\listparent.h
+	<iostream>
+
+1586317735 source:c:\users\azizah cahya\documents\github\tugasbesar_std\listrelasi.cpp
+	<iostream>
+	<stdlib.h>
+	"listRelasi.h"
+
+1586317465 c:\users\azizah cahya\documents\github\tugasbesar_std\listrelasi.h
+	<iostream>
+	"listChild.h"
+	"listParent.h"
+
+1586317637 source:c:\users\azizah cahya\documents\github\tugasbesar_std\main.cpp
+	<iostream>
+	"listChild.h"
+	"listParent.h"
+	"listRelasi.h"
+
+1586317454 c:\users\azizah cahya\documents\github\tugasbesar_std\listchild.h
+	<iostream>
+
+1586317454 source:c:\users\azizah cahya\documents\github\tugasbesar_std\listchild.cpp
+	"listChild.h"
+

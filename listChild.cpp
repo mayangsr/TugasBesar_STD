@@ -1,120 +1,144 @@
+//double circular
 #include "listChild.h"
 
-void createList(List_child &L){
-    first(L)=NULL;
+void createListChild(List_child &L){
+    first_child(L)=NULL;
 }
 
-address_child createElmChild(int idBuku, string judulBuku, string kodeBuku, int tahun){
+address_child createElmChild(int idBuku, string judulBuku, int tahun){
     address_child P;
     P = new elmlist_child;
-    info(P).idBuku = idBuku;
-    info(P).judulBuku = judulBuku;
-    info(P).kodeBuku = kodeBuku;
-    info(P).tahun = tahun;
-    next(P) = NULL;
+    info_Child(P).idBuku = idBuku;
+    info_Child(P).judulBuku = judulBuku;
+    info_Child(P).tahun = tahun;
+    next_Child(P) = NULL;
+    prev_Child(P) = NULL;
     return P;
 }
-void insertFirst(List_child &L, address_child P){
-    if (first(L)==NULL){
-        first(L)=P;
-        next(first(L))=P;
-        prev(first(L))=P;
-    }else{
-        next(P)=first(L);
-        prev(P)=first(L);
-        next(prev(first(L)))=P;
 
-        prev(first(L))=P;
-        first(L)=P;
-    }
-}
-void insertLast(List_child &L, address_child P){
-    if (first(L)==NULL){
-        insertFirst(L, P);
+void insertFirstChild(List_child &L, address_child P){
+    if (first_child(L)==NULL){
+        first_child(L)=P;
+        next_Child(first_child(L))=P;
+        prev_Child(first_child(L))=P;
     }else{
-        next(prev(first(L)))=P;
-        prev(P)=prev(first(L));
-        next(P)=first(L);
-        prev(first(L))=P;
+        next_Child(P)=first_child(L);
+        prev_Child(P)=prev_Child(first_child(L));
+        next_Child(prev_Child(first_child(L)))=P;
+        prev_Child(first_child(L))=P;
+        first_child(L)=P;
     }
 }
-void insertAfter(List_child &L, address_child Prec, address_child P){
-    if (Prec==prev(first(L))){
-        insertLast(L, P);
+
+void insertLastChild(List_child &L, address_child P){
+    if (first_child(L)==NULL){
+        insertFirstChild(L, P);
     }else{
-        next(P)=next(Prec);
-        prev(P)=Prec;
-        next(Prec)=P;
-        prev(next(P))=P;
+        next_Child(prev_Child(first_child(L)))=P;
+        prev_Child(P)=prev_Child(first_child(L));
+        next_Child(P)=first_child(L);
+        prev_Child(first_child(L))=P;
     }
 }
-void deleteFirst(List_child &L, address_child &P){
-    P=first(L);
-    if (next(P)==first(L)){
-        next(P)=NULL;
-        prev(P)=NULL;
-/*
-    }else if (prev(first(L)==next(first(L)))){
-        first(L)=next(P);
-        next(first(L))=first(L);
-        prev(first(L))=first(L);
-        next(P)=NULL;
-        prev(P)=NULL;
-*/
-/** ca itu yg aku matiin cek coba pake ga wwkwk, kalo make itu yg last ikut ke delete **/
+
+void insertAfterChild(List_child &L, address_child Prec, address_child P){
+    if (Prec==prev_Child(first_child(L))){
+        insertLastChild(L, P);
+    }else if(first_child(L) == NULL){
+        cout<<"List is empty"<<endl;
     }else{
-        first(L)=next(P);
-        next(prev(P))=first(L);
-        prev(first(L))=prev(P);
-        next(P)=NULL;
-        prev(P)=NULL;
+        next_Child(P)=next_Child(Prec);
+        prev_Child(P)=Prec;
+        next_Child(Prec)=P;
+        prev_Child(next_Child(P))=P;
     }
 }
-void deleteLast(List_child &L, address_child &P){
-    P=prev(first(L));
-    if (P==first(L)){
-        deleteFirst(L, P);
-    }else if (prev(first(L))==next(first(L))){
-        next(first(L))=first(L);
-        prev(first(L))=first(L);
-        next(P)=NULL;
-        prev(P)=NULL;
+
+void insertSortChild(List_child &L, address_child P){
+    if(first_child(L) == NULL || info_Child(P).idBuku <= info_Child(first_child(L)).idBuku){
+        insertFirstChild(L, P);
+    }else if(info_Child(P).idBuku  >= info_Child(prev_Child(first_child(L))).idBuku ){
+        insertLastChild(L, P);
     }else{
-        next(prev(P))=first(L);
-        prev(first(L))=prev(P);
-        next(P)=NULL;
-        prev(P)=NULL;
-    }
-}
-/** yg delete after jg pake list kan? **/
-void deleteAfter(List_child &L, address_child Prec, address_child &P){
-    P=next(Prec);
-    if (P==first(L)){
-        deleteFirst(L, P);
-    }else if (P==prev(first(L))){
-        deleteLast(L, P);
-    }else{
-        next(Prec)=next(P);
-        prev(next(P))=Prec;
-        next(P)=NULL;
-        prev(P)=NULL;
-    }
-}
-void printInfoChild(List_child L){
-    address_child P = first(L);
-    do{
-        cout<<info(P).idBuku<<". "<<info(P).judulBuku<<" "<<info(P).kodeBuku<<" "<<info(P).tahun<<"."<<endl;
-        P=next(P);
-    }while(P!=first(L));
-}
-address_child findElmChild(List_child &L, string newKode){
-    address_child P = first(L);
-    do{
-        if (info(P).kodeBuku == newKode){
-            return P;
-        }else{
-            return NULL;
+        address_child Q = first_child(L);
+        while(info_Child(Q).idBuku  > info_Child(P).idBuku ){
+            Q = next_Child(Q);
         }
-        P=next(P);
-    }while (P!=NULL || P!=first(L));
+        insertAfterChild(L, Q, P);
+    }
+}
+
+void deleteFirstChild(List_child &L, address_child &P){
+    P = first_child(L);
+    if(first_child(L) == NULL){
+        cout<<"List is empty"<<endl;
+    }else if (next_Child(P)==first_child(L)){
+        next_Child(P) = NULL;
+        prev_Child(P) = NULL;
+        first_child(L) = NULL;
+    }else{
+        first_child(L)=next_Child(P);
+        next_Child(prev_Child(P))=first_child(L);
+        prev_Child(first_child(L))=prev_Child(P);
+        next_Child(P)=NULL;
+        prev_Child(P)=NULL;
+    }
+}
+
+void deleteLastChild(List_child &L, address_child &P){
+    P = prev_Child(first_child(L));
+        next_Child(prev_Child(P))=first_child(L);
+        prev_Child(first_child(L))=prev_Child(P);
+        next_Child(P)=NULL;
+        prev_Child(P)=NULL;
+
+}
+
+void deleteAfterChild(List_child &L, address_child Prec, address_child &P){
+    P=next_Child(Prec);
+        next_Child(Prec)=next_Child(P);
+        prev_Child(next_Child(P))=Prec;
+        next_Child(P)=NULL;
+        prev_Child(P)=NULL;
+
+}
+
+void deleteChild(List_child &L, address_child P){
+    if(first_child(L) == NULL){
+        cout<<"List is empty"<<endl;
+    }else if(P == first_child(L)){
+        deleteFirstChild(L, P);
+    }else if(P == prev_Child(first_child(L))){
+        deleteLastChild(L, P);
+    }else{
+        deleteAfterChild(L, prev_Child(P), P);
+    }
+    delete P;
+}
+
+void printInfoChild(List_child L){
+    address_child P = first_child(L);
+    do{
+        cout<<"ID Buku : "<<info_Child(P).idBuku<<endl;
+        cout<<"Judul Buku : "<<info_Child(P).judulBuku<<endl;
+        cout<<"Tahun Terbit : "<<info_Child(P).tahun<<endl;
+        cout<<endl;
+        P=next_Child(P);
+    }while(P!=first_child(L));
+    cout<<endl;
+}
+
+address_child findElmChild(List_child &L, int id){
+    address_child P = first_child(L);
+    if(P != NULL){
+        do{
+            if (info_Child(P).idBuku == id){
+                return P;
+            }
+            P=next_Child(P);
+        }while (P!=first_child(L));
+        return NULL;
+    }else{
+        return NULL;
+    }
 }
