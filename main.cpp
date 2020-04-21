@@ -91,65 +91,85 @@ int main()
         }
         case 5 :
         {
-            int ID, idBuku;
-            cout<<"Masukkan NIM :";
-            cin>>ID;
-            cout<<"Masukkan ID Buku : ";
-            cin>>idBuku;
-            address_parent Q = findElmParent(L1, ID);
-            address_child R = findElmChild(L2, idBuku);
-            while(Q == NULL || R == NULL){
-                if(Q == NULL){
-                    cout<<"NIM tidak ditemukan"<<endl;
-                    cout<<"Masukkan NIM :";
-                    cin>>ID;
+            /** NIM yang sama tidak boleh meminjam dengan ID Buku yang sama**/
+            if (first_child(L2)==NULL && first_parent(L1)==NULL){
+                cout<<"List Kosong";
+            }else{
+                int ID, idBuku;
+                cout<<"Masukkan NIM :";
+                cin>>ID;
+                address_parent Q = findElmParent(L1, ID);
+                while (Q==NULL){
+                    cout<<"NIM tidak ditemukan\n"; cout<<"Masukkan NIM: "; cin>>ID;
                     Q = findElmParent(L1, ID);
-                }else if(R == NULL){
-                    cout<<"ID Buku tidak ditemukan"<<endl;
-                    cout<<"Masukkan ID Buku : ";
-                    cin>>idBuku;
+                }
+                cout<<"Masukkan ID Buku : ";
+                cin>>idBuku;
+                address_child R = findElmChild(L2, idBuku);
+                while (R == NULL){
+                    cout<<"ID buku tidak ditemukan\n"; cout<<"Masukkan ID buku: "; cin>>idBuku;
                     R = findElmChild(L2, idBuku);
                 }
+                address_relasi S = findElmRelasi(L3, ID, idBuku);
+                address_child Z = findElmChild(L2, idBuku);
+                if(S==S){
+                    cout<<"Tidak boleh meminjam buku yang sama";
+                }else if (S==NULL){
+                    address_relasi P = createElmRelasi(Q, R);
+                    insertRelasi(L3, P);
+                    cout<<"Buku Berhasil dipinjam";
+                }
             }
-            address_relasi P = createElmRelasi(Q, R);
-            insertRelasi(L3, P);
             break;
         }
         case 6 :
         {
             //coba kamu cari buat peminjamannya lebih dari satu terus kamu hapus
             //kamu coba perbaikin bugnya
-            int ID, idBuku;
-            cout<<"Masukkan NIM :";
-            cin>>ID;
-            cout<<"Masukkan ID Buku : ";
-            cin>>idBuku;
-            address_relasi P = findElmRelasi(L3, ID, idBuku);
-            while(P == NULL)
-            {
-                cout<<"Data tidak ditemukan"<<endl;
+            if(first_relasi(L3)==NULL){
+            }else{
+                int ID, idBuku;
                 cout<<"Masukkan NIM :";
                 cin>>ID;
+                address_parent Q = findElmParent(L1, ID);
+                while (Q==NULL){
+                    cout<<"NIM tidak ditemukan\n"; cout<<"Masukkan NIM: "; cin>>ID;
+                    Q = findElmParent(L1, ID);
+                }
                 cout<<"Masukkan ID Buku : ";
                 cin>>idBuku;
-                P = findElmRelasi(L3, ID, idBuku);
-            }
-            if(P == first_relasi(L3))
-            {
-                deleteFirstRelasi(L3, P);
-            }
-            else if(P == last_relasi(L3))
-            {
-                deleteLastRelasi(L3, P);
-            }
-            else
-            {
-                deleteAfterRelasi(L3, prev_Relasi(P), P);
+                address_child R = findElmChild(L2, idBuku);
+                while (R == NULL){
+                    cout<<"ID buku tidak ditemukan\n"; cout<<"Masukkan ID buku: "; cin>>idBuku;
+                    R = findElmChild(L2, idBuku);
+                }
+                address_relasi P = findElmRelasi(L3, ID, idBuku);
+                while(P == NULL)
+                {
+                    cout<<"Data tidak ditemukan"<<endl;
+                    cout<<"Masukkan NIM :";
+                    cin>>ID;
+                    cout<<"Masukkan ID Buku : ";
+                    cin>>idBuku;
+                    P = findElmRelasi(L3, ID, idBuku);
+                }
+                if(P == first_relasi(L3))
+                {
+                    deleteFirstRelasi(L3, P);
+                }
+                else if(P == last_relasi(L3))
+                {
+                    deleteLastRelasi(L3, P);
+                }
+                else
+                {
+                    deleteAfterRelasi(L3, prev_Relasi(P), P);
+                }
             }
         }
         case 7 :
         {
-            printInfoRelasi(L3);
+                printInfoRelasi(L3);
             break;
         }
         case 8 :
@@ -159,8 +179,8 @@ int main()
                 cin>>nim;
                 address_parent P = findElmParent(L1, nim);
                 address_relasi Q = findElmRelasiParent(L3, P);
+                printInfoRelasi(L3);
                 break;
-
             }
         case 9 :
             {
@@ -188,6 +208,18 @@ int main()
                 }else{
                    deleteChild(L2, P);
                 }
+                break;
+            }
+        case 11 :
+            {
+                int totBuku = totalBuku(L2);
+                cout<<"Total Buku: "<<totBuku;
+                break;
+            }
+        case 12 :
+            {
+                int mhsw = totalMahasiswa(L1);
+                cout<<"Total Mahasiswa: "<<mhsw;
                 break;
             }
         case 13:

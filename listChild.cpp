@@ -118,13 +118,17 @@ void deleteChild(List_child &L, address_child P){
 
 void printInfoChild(List_child L){
     address_child P = first_child(L);
-    do{
-        cout<<"ID Buku : "<<info_Child(P).idBuku<<endl;
-        cout<<"Judul Buku : "<<info_Child(P).judulBuku<<endl;
-        cout<<"Tahun Terbit : "<<info_Child(P).tahun<<endl;
-        cout<<endl;
-        P=next_Child(P);
-    }while(P!=first_child(L));
+    if (P == NULL){
+        cout<<"List Kosong \n";
+    }else{
+        do{
+            cout<<"ID Buku : "<<info_Child(P).idBuku<<endl;
+            cout<<"Judul Buku : "<<info_Child(P).judulBuku<<endl;
+            cout<<"Tahun Terbit : "<<info_Child(P).tahun<<endl;
+            cout<<endl;
+            P=next_Child(P);
+        }while(P!=first_child(L));
+    }
     cout<<endl;
 }
 
@@ -141,4 +145,16 @@ address_child findElmChild(List_child &L, int id){
     }else{
         return NULL;
     }
+}
+
+int totalBuku(List_child L){
+    int i = 0;
+    address_child P = first_child(L);
+    if (P!=NULL){
+        do{
+            i++;
+            P = next_Child(P);
+        }while (P != first_child(L));
+    }
+    return i;
 }

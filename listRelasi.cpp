@@ -78,22 +78,26 @@ void deleteAfterRelasi(List_Relasi &L, address_relasi Prec, address_relasi P){
 
 void printInfoRelasi(List_Relasi L){
     address_relasi P = first_relasi(L);
+    if(first_relasi(L)==NULL){
+    cout<<"List Kosong"<<endl;
+    }
     while(P != NULL){
-        cout<<"NIM : "<<info_Parent(mahasiswa(P)).NIM<<endl;
-        cout<<"Jurusan : "<<info_Parent(mahasiswa(P)).jurusan<<endl;
-        cout<<"Angkatan : "<<info_Parent(mahasiswa(P)).angkatan<<endl;
-        cout<<"ID Buku : "<<info_Child(buku(P)).idBuku<<endl;
-        cout<<"Judul Buku : "<<info_Child(buku(P)).judulBuku<<endl;
-        cout<<"Tahun Terbit : "<<info_Child(buku(P)).tahun<<endl;
-        cout<<endl;
-        P = next_Relasi(P);
+            cout<<"NIM : "<<info_Parent(mahasiswa(P)).NIM<<endl;
+            cout<<"Jurusan : "<<info_Parent(mahasiswa(P)).jurusan<<endl;
+            cout<<"Angkatan : "<<info_Parent(mahasiswa(P)).angkatan<<endl;
+            cout<<"ID Buku : "<<info_Child(buku(P)).idBuku<<endl;
+            cout<<"Judul Buku : "<<info_Child(buku(P)).judulBuku<<endl;
+            cout<<"Tahun Terbit : "<<info_Child(buku(P)).tahun<<endl;
+            cout<<endl;
+            P = next_Relasi(P);
     }
     cout<<endl;
 }
 
+
 address_relasi findElmRelasi(List_Relasi L, int nim, int idBuku){
     address_relasi P = first_relasi(L);
-    while(P != NULL && info_Parent(mahasiswa(P)).NIM != nim && info_Child(buku(P)).idBuku != idBuku){
+    while(P != NULL && info_Parent(mahasiswa(P)).NIM == nim && info_Child(buku(P)).idBuku == idBuku){
         P = next_Relasi(P);
     }
     return P;

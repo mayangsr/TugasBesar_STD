@@ -109,12 +109,16 @@ void deleteParent(List_parent &L, address_parent P){
 
 void printInfoParent(List_parent L){
     address_parent P = first_parent(L);
-    while (P!=NULL){
-        cout<<"NIM : "<<info_Parent(P).NIM<<endl;
-        cout<<"Jurusan : "<<info_Parent(P).jurusan<<endl;
-        cout<<"Angkatan : "<<info_Parent(P).angkatan<<endl;
-        cout<<endl;
-        P=next_Parent(P);
+    if (P==NULL){
+        cout<<"List Kosong\n";
+    }else{
+        while (P!=NULL){
+            cout<<"NIM : "<<info_Parent(P).NIM<<endl;
+            cout<<"Jurusan : "<<info_Parent(P).jurusan<<endl;
+            cout<<"Angkatan : "<<info_Parent(P).angkatan<<endl;
+            cout<<endl;
+            P=next_Parent(P);
+        }
     }
     cout<<endl;
 }
@@ -125,4 +129,14 @@ address_parent findElmParent(List_parent &L, int ID){
         P=next_Parent(P);
     }
     return P;
+}
+
+int totalMahasiswa(List_parent L){
+    address_parent P = first_parent(L);
+    int i = 0;
+    while (P!=NULL){
+        i++;
+        P = next_Parent(P);
+    }
+    return i;
 }

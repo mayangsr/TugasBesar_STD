@@ -38,5 +38,6 @@ void deleteAfterChild(List_child &L, address_child Prec, address_child &P);
 void deleteChild(List_child &L, address_child P);
 void printInfoChild(List_child L);
 address_child findElmChild(List_child &L, int id);
+int totalBuku(List_child L);
 
 #endif // LISTCHILD_H_INCLUDED

@@ -49,3 +49,31 @@
 1586317454 source:c:\users\azizah cahya\documents\github\tugasbesar_std\listchild.cpp
 	"listChild.h"
 
+1587042843 source:e:\nyoba_lagi\tugasbesar_std-master\tugasbesar_std-master\listchild.cpp
+	"listChild.h"
+
+1587042038 e:\nyoba_lagi\tugasbesar_std-master\tugasbesar_std-master\listchild.h
+	<iostream>
+
+1587042843 source:e:\nyoba_lagi\tugasbesar_std-master\tugasbesar_std-master\listparent.cpp
+	"listParent.h"
+
+1587042038 e:\nyoba_lagi\tugasbesar_std-master\tugasbesar_std-master\listparent.h
+	<iostream>
+
+1587477014 source:e:\nyoba_lagi\tugasbesar_std-master\tugasbesar_std-master\listrelasi.cpp
+	<iostream>
+	<stdlib.h>
+	"listRelasi.h"
+
+1587385245 e:\nyoba_lagi\tugasbesar_std-master\tugasbesar_std-master\listrelasi.h
+	<iostream>
+	"listChild.h"
+	"listParent.h"
+
+1587478263 source:e:\nyoba_lagi\tugasbesar_std-master\tugasbesar_std-master\main.cpp
+	<iostream>
+	"listChild.h"
+	"listParent.h"
+	"listRelasi.h"
+

@@ -40,6 +40,7 @@ void deleteAfterParent(List_parent &L, address_parent Prec, address_parent &P);
 void deleteParent(List_parent &L, address_parent P);
 void printInfoParent(List_parent L);
 address_parent findElmParent(List_parent &L, int newID);
+int totalMahasiswa(List_parent L);
 
 
 #endif // LISTPARENT_H_INCLUDED
