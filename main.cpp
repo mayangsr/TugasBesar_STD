@@ -92,55 +92,77 @@ int main()
         case 5 :
         {
             /** NIM yang sama tidak boleh meminjam dengan ID Buku yang sama**/
-            if (first_child(L2)==NULL && first_parent(L1)==NULL){
+            if (first_child(L2)==NULL && first_parent(L1)==NULL)
+            {
                 cout<<"List Kosong";
-            }else{
+            }
+            else
+            {
                 int ID, idBuku;
                 cout<<"Masukkan NIM :";
                 cin>>ID;
                 address_parent Q = findElmParent(L1, ID);
-                while (Q==NULL){
-                    cout<<"NIM tidak ditemukan\n"; cout<<"Masukkan NIM: "; cin>>ID;
+                while (Q==NULL)
+                {
+                    cout<<"NIM tidak ditemukan\n";
+                    cout<<"Masukkan NIM: ";
+                    cin>>ID;
                     Q = findElmParent(L1, ID);
                 }
                 cout<<"Masukkan ID Buku : ";
                 cin>>idBuku;
                 address_child R = findElmChild(L2, idBuku);
-                while (R == NULL){
-                    cout<<"ID buku tidak ditemukan\n"; cout<<"Masukkan ID buku: "; cin>>idBuku;
+                while (R == NULL)
+                {
+                    cout<<"ID buku tidak ditemukan\n";
+                    cout<<"Masukkan ID buku: ";
+                    cin>>idBuku;
                     R = findElmChild(L2, idBuku);
                 }
                 address_relasi S = findElmRelasi(L3, ID, idBuku);
                 address_child Z = findElmChild(L2, idBuku);
-                if(S==S){
+                if(S!=NULL)
+                {
                     cout<<"Tidak boleh meminjam buku yang sama";
-                }else if (S==NULL){
+                }
+                else
+                {
                     address_relasi P = createElmRelasi(Q, R);
                     insertRelasi(L3, P);
                     cout<<"Buku Berhasil dipinjam";
                 }
             }
+
             break;
         }
         case 6 :
         {
             //coba kamu cari buat peminjamannya lebih dari satu terus kamu hapus
             //kamu coba perbaikin bugnya
-            if(first_relasi(L3)==NULL){
-            }else{
+            if(first_relasi(L3)==NULL)
+            {
+            }
+            else
+            {
                 int ID, idBuku;
                 cout<<"Masukkan NIM :";
                 cin>>ID;
                 address_parent Q = findElmParent(L1, ID);
-                while (Q==NULL){
-                    cout<<"NIM tidak ditemukan\n"; cout<<"Masukkan NIM: "; cin>>ID;
+                while (Q==NULL)
+                {
+                    cout<<"NIM tidak ditemukan\n";
+                    cout<<"Masukkan NIM: ";
+                    cin>>ID;
                     Q = findElmParent(L1, ID);
                 }
                 cout<<"Masukkan ID Buku : ";
                 cin>>idBuku;
                 address_child R = findElmChild(L2, idBuku);
-                while (R == NULL){
-                    cout<<"ID buku tidak ditemukan\n"; cout<<"Masukkan ID buku: "; cin>>idBuku;
+                while (R == NULL)
+                {
+                    cout<<"ID buku tidak ditemukan\n";
+                    cout<<"Masukkan ID buku: ";
+                    cin>>idBuku;
                     R = findElmChild(L2, idBuku);
                 }
                 address_relasi P = findElmRelasi(L3, ID, idBuku);
@@ -169,10 +191,16 @@ int main()
         }
         case 7 :
         {
-                printInfoRelasi(L3);
+            printInfoRelasi(L3);
             break;
         }
         case 8 :
+        {
+            if (first_parent(L1)==NULL)
+            {
+                cout<<"List Kosong";
+            }
+            else
             {
                 int nim;
                 cout<<"Masukkan NIM : ";
@@ -180,48 +208,69 @@ int main()
                 address_parent P = findElmParent(L1, nim);
                 address_relasi Q = findElmRelasiParent(L3, P);
                 printInfoRelasi(L3);
-                break;
             }
+            break;
+        }
         case 9 :
+        {
+            if (first_parent(L1)==NULL)
+            {
+                cout<<"List Kosong";
+            }
+            else
             {
                 int id;
                 cout<<"Masukkan NIM : ";
                 cin>>id;
                 address_parent P = findElmParent(L1, id);
                 address_relasi Q = findElmRelasiParent(L3, P);
-                if(Q != NULL){
+                if(Q != NULL)
+                {
                     cout<<"Masih Ada Buku yang Belum Dikembalikan"<<endl;
-                }else{
-                   deleteParent(L1, P);
                 }
-                break;
-             }
+                else
+                {
+                    deleteParent(L1, P);
+                }
+            }
+            break;
+        }
         case 10 :
+        {
+            if(first_child(L2)==NULL)
+            {
+                cout<<"List Kosong";
+            }
+            else
             {
                 int idBuku;
                 cout<<"Masukkan ID Buku : ";
                 cin>>idBuku;
                 address_child P = findElmChild(L2, idBuku);
                 address_relasi Q = findElmRelasiChild(L3, P);
-                if(Q != NULL){
+                if(Q != NULL)
+                {
                     cout<<"Masih Ada Buku yang Belum Dikembalikan"<<endl;
-                }else{
-                   deleteChild(L2, P);
                 }
-                break;
+                else
+                {
+                    deleteChild(L2, P);
+                }
             }
+            break;
+        }
         case 11 :
-            {
-                int totBuku = totalBuku(L2);
-                cout<<"Total Buku: "<<totBuku;
-                break;
-            }
+        {
+            int totBuku = totalBuku(L2);
+            cout<<"Total Buku: "<<totBuku;
+            break;
+        }
         case 12 :
-            {
-                int mhsw = totalMahasiswa(L1);
-                cout<<"Total Mahasiswa: "<<mhsw;
-                break;
-            }
+        {
+            int mhsw = totalMahasiswa(L1);
+            cout<<"Total Mahasiswa: "<<mhsw;
+            break;
+        }
         case 13:
         {
             int sum = totalPeminjaman(L3);

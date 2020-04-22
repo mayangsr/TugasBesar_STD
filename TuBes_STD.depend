@@ -77,3 +77,25 @@
 	"listParent.h"
 	"listRelasi.h"
 
+1587042843 source:c:\users\asus\documents\github\tugasbesar_std\listchild.cpp
+	"listChild.h"
+
+1587042038 c:\users\asus\documents\github\tugasbesar_std\listchild.h
+	<iostream>
+
+1587042843 source:c:\users\asus\documents\github\tugasbesar_std\listparent.cpp
+	"listParent.h"
+
+1587042038 c:\users\asus\documents\github\tugasbesar_std\listparent.h
+	<iostream>
+
+1587477014 source:c:\users\asus\documents\github\tugasbesar_std\listrelasi.cpp
+	<iostream>
+	<stdlib.h>
+	"listRelasi.h"
+
+1587385245 c:\users\asus\documents\github\tugasbesar_std\listrelasi.h
+	<iostream>
+	"listChild.h"
+	"listParent.h"
+
