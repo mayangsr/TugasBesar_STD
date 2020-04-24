@@ -1,5 +1,7 @@
 //single
 #include "listParent.h"
+#include <stdio.h>
+#include <iomanip>
 
 void createListParent(List_parent &L){
     first_parent(L)=NULL;
@@ -16,38 +18,29 @@ address_parent createElmParent(int id, string jurusan, int year){
     return P;
 }
 
-bool isEmptyParent(List_parent L){
-    return first_parent(L)==NULL;
-}
-
 void insertFirstParent(List_parent &L, address_parent P){
-    if (isEmptyParent(L)){
-        first_parent(L)=P;
-        last_parent(L)=P;
+    if(first_parent(L) == NULL){
+        first_parent(L) = P;
+        last_parent(L) = P;
     }else{
         next_Parent(P)=first_parent(L);
         first_parent(L)=P;
     }
-}
+ }
 
 void insertAfterParent(List_parent &L, address_parent Prec, address_parent P){
-    P=first_parent(L);
-    if (isEmptyParent(L) || Prec == last_parent(L)){
-        insertLastParent(L, P);
-    }else {
-        next_Parent(P)=next_Parent(Prec);
-        next_Parent(Prec)=P;
-    }
+    next_Parent(P)=next_Parent(Prec);
+    next_Parent(Prec)=P;
 }
 
 void insertSortParent(List_parent &L, address_parent P){
     if(first_parent(L) == NULL || info_Parent(P).NIM <= info_Parent(first_parent(L)).NIM){
         insertFirstParent(L, P);
-    }else if(info_Parent(P).NIM >= info_Parent(last_parent(L)).NIM){
+    }else if(info_Parent(P).NIM > info_Parent(last_parent(L)).NIM){
         insertLastParent(L, P);
     }else{
         address_parent Q = first_parent(L);
-        while(info_Parent(Q).NIM > info_Parent(P).NIM){
+        while(info_Parent(next_Parent(Q)).NIM < info_Parent(P).NIM){
             Q = next_Parent(Q);
         }
         insertAfterParent(L, Q, P);
@@ -55,13 +48,9 @@ void insertSortParent(List_parent &L, address_parent P){
 }
 
 void insertLastParent(List_parent &L, address_parent P){
-    if (isEmptyParent(L)){
-        first_parent(L)=NULL;
-        last_parent(L)=NULL;
-    }else{
         next_Parent(last_parent(L))=P;
         last_parent(L)=P;
-    }
+
 }
 
 void deleteFirstParent(List_parent &L, address_parent &P){
@@ -112,15 +101,20 @@ void printInfoParent(List_parent L){
     if (P==NULL){
         cout<<"List Kosong\n";
     }else{
-        while (P!=NULL){
-            cout<<"NIM : "<<info_Parent(P).NIM<<endl;
-            cout<<"Jurusan : "<<info_Parent(P).jurusan<<endl;
-            cout<<"Angkatan : "<<info_Parent(P).angkatan<<endl;
-            cout<<endl;
-            P=next_Parent(P);
+        cout<<"=========================================================="<<endl;
+        cout<<"||                    DATA MAHASISWA                    ||"<<endl;
+        cout<<"=========================================================="<<endl;
+        cout<<"||     NIM       ||"<<"          Jurusan          ||"<<"Angkatan||"<<endl;
+        cout<<"==========================================================\n";
+        while(P != NULL)
+        {
+            cout<<"||"<<setiosflags(ios::left)<<setw(15)<<info_Parent(P).NIM<<"||"
+                <<setiosflags(ios::left)<<setw(27)<<info_Parent(P).jurusan<<"||"
+                <<setiosflags(ios::left)<<setw(8)<<info_Parent(P).angkatan<<"||"<<endl;
+            P = next_Parent(P);
         }
     }
-    cout<<endl;
+        cout<<"=========================================================="<<endl;
 }
 
 address_parent findElmParent(List_parent &L, int ID){

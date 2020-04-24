@@ -1,5 +1,7 @@
 //double circular
 #include "listChild.h"
+#include <stdio.h>
+#include <iomanip>
 
 void createListChild(List_child &L){
     first_child(L)=NULL;
@@ -31,27 +33,18 @@ void insertFirstChild(List_child &L, address_child P){
 }
 
 void insertLastChild(List_child &L, address_child P){
-    if (first_child(L)==NULL){
-        insertFirstChild(L, P);
-    }else{
         next_Child(prev_Child(first_child(L)))=P;
         prev_Child(P)=prev_Child(first_child(L));
         next_Child(P)=first_child(L);
         prev_Child(first_child(L))=P;
-    }
+
 }
 
 void insertAfterChild(List_child &L, address_child Prec, address_child P){
-    if (Prec==prev_Child(first_child(L))){
-        insertLastChild(L, P);
-    }else if(first_child(L) == NULL){
-        cout<<"List is empty"<<endl;
-    }else{
         next_Child(P)=next_Child(Prec);
         prev_Child(P)=Prec;
         next_Child(Prec)=P;
         prev_Child(next_Child(P))=P;
-    }
 }
 
 void insertSortChild(List_child &L, address_child P){
@@ -61,7 +54,7 @@ void insertSortChild(List_child &L, address_child P){
         insertLastChild(L, P);
     }else{
         address_child Q = first_child(L);
-        while(info_Child(Q).idBuku  > info_Child(P).idBuku ){
+        while(info_Child(next_Child(Q)).idBuku  < info_Child(P).idBuku ){
             Q = next_Child(Q);
         }
         insertAfterChild(L, Q, P);
@@ -121,15 +114,21 @@ void printInfoChild(List_child L){
     if (P == NULL){
         cout<<"List Kosong \n";
     }else{
-        do{
-            cout<<"ID Buku : "<<info_Child(P).idBuku<<endl;
-            cout<<"Judul Buku : "<<info_Child(P).judulBuku<<endl;
-            cout<<"Tahun Terbit : "<<info_Child(P).tahun<<endl;
-            cout<<endl;
-            P=next_Child(P);
-        }while(P!=first_child(L));
+        cout<<"=================================================================="<<endl;
+        cout<<"||                              DATA BUKU                       ||"<<endl;
+        cout<<"=================================================================="<<endl;
+        cout<<"||  ID Buku  ||"<<"             Judul Buku            ||"<<"Tahun Terbit||"<<endl;
+        cout<<"==================================================================\n";
+        do
+        {
+            cout<<"||"<<setiosflags(ios::left)<<setw(11)<<info_Child(P).idBuku<<"||"
+                <<setiosflags(ios::left)<<setw(35)<<info_Child(P).judulBuku<<"||"
+                <<setiosflags(ios::left)<<setw(12)<<info_Child(P).tahun<<"||"<<endl;
+
+            P = next_Child(P);
+        }while(P != first_child(L));
     }
-    cout<<endl;
+        cout<<"=================================================================="<<endl;
 }
 
 address_child findElmChild(List_child &L, int id){

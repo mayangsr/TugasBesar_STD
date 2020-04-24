@@ -29,7 +29,6 @@ struct List_parent{
 
 void createListParent(List_parent &L);
 address_parent createElmParent(int id, string jurusan, int year);
-bool isEmptyParent(List_parent L);
 void insertFirstParent(List_parent &L, address_parent P);
 void insertAfterParent(List_parent &L, address_parent Prec, address_parent P);
 void insertLastParent(List_parent &L, address_parent P);
