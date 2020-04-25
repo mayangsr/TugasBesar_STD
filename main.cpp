@@ -38,310 +38,311 @@ int main()
         cin>>pilih;
         switch(pilih)
         {
-        case 1:
-        {
-            int id, year;
-            string jurusan;
-            cout<<"=================INPUT DATA MAHASISWA=================="<<endl;
-            cout<<" NIM      : ";
-            cin>>id;
-            address_parent Q = findElmParent(L1, id);
-            while(Q != NULL)
+            case 1:
             {
-                cout<<" NIM telah digunakan"<<endl;
+                /**input jurusan sama judul buku bug, bisa lgsg lanjot ke yg selanjutnya**/
+                int id, year;
+                string jurusan;
+                cout<<"=================INPUT DATA MAHASISWA==============="<<endl;
                 cout<<" NIM      : ";
                 cin>>id;
-                Q = findElmParent(L1, id);
+                address_parent Q = findElmParent(L1, id);
+                while(Q != NULL)
+                {
+                    cout<<" NIM telah digunakan"<<endl;
+                    cout<<" NIM      : ";
+                    cin>>id;
+                    Q = findElmParent(L1, id);
+                }
+                cout<<" Jurusan  : ";
+                cin.get();
+                getline(cin, jurusan);
+                cout<<" Angkatan : ";
+                cin>>year;
+                address_parent P = createElmParent(id, jurusan, year);
+                insertSortParent(L1, P);
+                cout<<"============DATA MAHASISWA TELAH DIINPUT============"<<endl;
+                break;
             }
-            cout<<" Jurusan  : ";
-            cin.get();
-            getline(cin, jurusan);
-            cout<<" Angkatan : ";
-            cin>>year;
-            address_parent P = createElmParent(id, jurusan, year);
-            insertSortParent(L1, P);
-            cout<<"============DATA MAHASISWA TELAH DIINPUT==============="<<endl;
-            break;
-        }
-        case 2:
-        {
-            int idBuku, tahunBuku;
-            string judul;
-            cout<<"===============INPUT DATA BUKU===================="<<endl;
-            cout<<" ID Buku      : ";
-            cin>>idBuku;
-            address_child Q = findElmChild(L2, idBuku);
-            while(Q != NULL)
+            case 2:
             {
-                cout<<" ID telah digunakan"<<endl;
+                //judul buku bug
+                int idBuku, tahunBuku;
+                string judul;
+                cout<<"=================INPUT DATA BUKU===================="<<endl;
                 cout<<" ID Buku      : ";
                 cin>>idBuku;
-                Q = findElmChild(L2, idBuku);
-            }
-            cout<<" Judul Buku   : ";
-            cin.get();
-            getline(cin,judul);
-            cout<<" Tahun Terbit : ";
-            cin>>tahunBuku;
-            address_child P = createElmChild(idBuku, judul, tahunBuku);
-            insertSortChild(L2, P);
-            cout<<"============DATA BUKU TELAH DIINPUT==============="<<endl;
-            break;
-        }
-        case 3 :
-        {
-            printInfoParent(L1);
-            break;
-        }
-        case 4 :
-        {
-            printInfoChild(L2);
-            break;
-        }
-        case 5 :
-        {
-            if (first_child(L2)==NULL && first_parent(L1)==NULL)
-            {
-                cout<<"List Kosong";
-            }
-            else
-            {
-                int ID, idBuku;
-                cout<<"==============PEMINJAMAN BUKU===================="<<endl;
-                cout<<endl;
-                cout<<" Masukkan NIM         : ";
-                cin>>ID;
-                address_parent Q = findElmParent(L1, ID);
-                while (Q==NULL)
+                address_child Q = findElmChild(L2, idBuku);
+                while(Q != NULL)
                 {
-                    cout<<" NIM tidak ditemukan\n";
+                    cout<<" ID telah digunakan"<<endl;
+                    cout<<" ID Buku      : ";
+                    cin>>idBuku;
+                    Q = findElmChild(L2, idBuku);
+                }
+                cout<<" Judul Buku   : ";
+                cin.get();
+                getline(cin,judul);
+                cout<<" Tahun Terbit : ";
+                cin>>tahunBuku;
+                address_child P = createElmChild(idBuku, judul, tahunBuku);
+                insertSortChild(L2, P);
+                cout<<"=============DATA BUKU TELAH DIINPUT================"<<endl;
+                break;
+            }
+            case 3 :
+            {
+                printInfoParent(L1);
+                break;
+            }
+            case 4 :
+            {
+                printInfoChild(L2);
+                break;
+            }
+            case 5 :
+            {
+                if(first_child(L2)==NULL &&first_parent(L1)==NULL){
+                    cout<<"List Kosong";
+                }else if(first_parent(L1)==NULL){
+                    cout<<"Daftar NIM kosong";
+                }else if (first_child(L2)==NULL )
+                {
+                    cout<<"Daftar ID Buku Kosong";
+                }
+                else
+                {
+                    int ID, idBuku;
+                    cout<<"=================PEMINJAMAN BUKU===================="<<endl;
+                    cout<<endl;
                     cout<<" Masukkan NIM         : ";
                     cin>>ID;
-                    Q = findElmParent(L1, ID);
-                }
-                cout<<" Masukkan ID Buku     : ";
-                cin>>idBuku;
-                address_child R = findElmChild(L2, idBuku);
-                while (R == NULL)
-                {
-                    cout<<" ID buku tidak ditemukan\n";
-                    cout<<" Masukkan ID Buku     : ";
-                    cin>>idBuku;
-                    R = findElmChild(L2, idBuku);
-                }
-                address_relasi S = findElmRelasi(L3, ID, idBuku);
+                    address_parent Q = findElmParent(L1, ID);
+                    if(Q==NULL)
+                    {
+                        cout<<"NIM tidak ditemukan \n";
+                        cout<<"!!!!!!!TIDAK DAPAT MEMINJAM BUKU!!!!!!!"<<endl;
+                    }else{
+                        cout<<" Masukkan ID Buku     : ";
+                        cin>>idBuku;
+                        address_child R = findElmChild(L2, idBuku);
+                        if (R == NULL)
+                        {
+                            cout<<" ID buku tidak ditemukan\n";
+                            cout<<"!!!!!!!TIDAK DAPAT MEMINJAM BUKU!!!!!!!"<<endl;
+                        }
+                        address_relasi S = findElmRelasi(L3, ID, idBuku);
 
-                if(S!=NULL)
+                        if(S!=NULL)
+                        {
+                            cout<<" Tidak boleh meminjam buku yang sama";
+                        }
+                        else if(R != NULL&&Q!=NULL)
+                        {
+                            address_relasi P = createElmRelasi(Q, R);
+                            insertRelasi(L3, P);
+                            cout<<endl;
+                            cout<<"==============BUKU BERHASIL DIPINJAM================"<<endl;
+                        }
+                    }
+                }
+                break;
+            }
+            case 6 :
+            {
+                if(first_relasi(L3)==NULL)
                 {
-                    cout<<" Tidak boleh meminjam buku yang sama";
+                    cout<<"List Kosong"<<endl;
                 }
                 else
                 {
-                    address_relasi P = createElmRelasi(Q, R);
-                    insertRelasi(L3, P);
+                    int ID, idBuku;
+                    cout<<"==============PENGEMBALIAN BUKU====================="<<endl;
                     cout<<endl;
-                    cout<<"==============BUKU BERHASIL DIPINJAM===================="<<endl;
-                }
-            }
-
-            break;
-        }
-        case 6 :
-        {
-            if(first_relasi(L3)==NULL)
-            {
-                cout<<"List Kosong"<<endl;
-            }
-            else
-            {
-                int ID, idBuku;
-                cout<<"==============PENGEMBALIAN BUKU===================="<<endl;
-                cout<<endl;
-                cout<<"|| Masukkan NIM         :";
-                cin>>ID;
-                address_parent Q = findElmParent(L1, ID);
-                while (Q==NULL)
-                {
-                    cout<<" NIM tidak ditemukan\n";
-                    cout<<" Masukkan NIM         :";
+                    cout<<" Masukkan NIM              : ";
                     cin>>ID;
-                    Q = findElmParent(L1, ID);
+                    address_parent Q = findElmParent(L1, ID);
+                    if (Q==NULL)
+                    {
+                        cout<<" NIM tidak ditemukan\n";
+                    }else{
+                        cout<<" Masukkan ID Buku          : ";
+                        cin>>idBuku;
+                        address_child R = findElmChild(L2, idBuku);
+                        if (R == NULL)
+                        {
+                            cout<<" ID buku tidak ditemukan\n";
+                        }
+                        address_relasi P = findElmRelasi(L3, ID, idBuku);
+                        if(P == NULL)
+                        {
+                            cout<<" Data tidak ditemukan dalam data peminjaman"<<endl;
+                        }else{
+                            if(P == first_relasi(L3))
+                            {
+                                deleteFirstRelasi(L3, P);
+                            }
+                            else if(P == last_relasi(L3))
+                            {
+                                deleteLastRelasi(L3, P);
+                            }
+                            else
+                            {
+                                deleteAfterRelasi(L3, prev_Relasi(P), P);
+                            }
+                            cout<<endl;
+                            cout<<"==============BUKU TELAH DIKEMBALIKAN================"<<endl;
+                        }
+                    }
                 }
-                cout<<"|| Masukkan ID Buku     : ";
-                cin>>idBuku;
-                address_child R = findElmChild(L2, idBuku);
-                while (R == NULL)
-                {
-                    cout<<" ID buku tidak ditemukan\n";
-                    cout<<" Masukkan ID buku     : ";
-                    cin>>idBuku;
-                    R = findElmChild(L2, idBuku);
+                break;
+            }
+            case 7 :
+            {
+                printInfoRelasi(L3);
+                break;
+            }
+            case 8 :
+            {
+                if(first_relasi(L3)==NULL){
+                    cout<<"List Peminjaman Kosong \n";
+                }else{
+                    int pilih;
+                    cout<<"Untuk melihat buku yang dipinjam mahasiswa tertentu silahkan pilih 1,\n"
+                        <<"Untuk mellihat daftar peminjam buku tertentu silahkan pilih 2\n"<<"\n";
+                    cout<<"1. Cari dengan NIM"<<endl;
+                    cout<<"2. Cari dengan ID Buku"<<endl;
+                    cout<<"Choose Menu : ";
+                    cin>>pilih;
+                    if(pilih == 1){
+                        int nim;
+                        cout<<"Masukkan NIM : ";
+                        cin>>nim;
+                        address_parent P = findElmParent(L1, nim);
+                        address_relasi Q = findElmRelasiParent(L3, P);
+                        if(Q != NULL){
+                            cout<<"=================================================================="<<endl;
+                            cout<<"||                              DATA BUKU                       ||"<<endl;
+                            cout<<"=================================================================="<<endl;
+                            cout<<"||  ID Buku  ||"<<"             Judul Buku            ||"<<"Tahun Terbit||"<<endl;
+                            cout<<"==================================================================\n";
+                            Q = first_relasi(L3);
+                            while(Q != NULL)
+                            {
+                                if(info_Parent(mahasiswa(Q)).NIM == nim){
+                                    cout<<"||"<<setiosflags(ios::left)<<setw(11)<<info_Child(buku(Q)).idBuku<<"||"
+                                    <<setiosflags(ios::left)<<setw(35)<<info_Child(buku(Q)).judulBuku<<"||"
+                                    <<setiosflags(ios::left)<<setw(12)<<info_Child(buku(Q)).tahun<<"||"<<endl;
+                                }
+                                Q = next_Relasi(Q);
+                            }
+                            cout<<"=================================================================="<<endl;
+                        }else{
+                            cout<<"Data Peminjaman Tidak Ditemukan"<<endl;
+                        }
+                    }else if(pilih == 2){
+                        int id;
+                        cout<<"Masukkan ID Buku: ";
+                        cin>>id;
+                        address_child R = findElmChild(L2, id);
+                        address_relasi Q = findElmRelasiChild(L3, R);
+                        if(Q != NULL){
+                            cout<<"=========================================================="<<endl;
+                            cout<<"||                    DATA MAHASISWA                    ||"<<endl;
+                            cout<<"=========================================================="<<endl;
+                            cout<<"||     NIM       ||"<<"          Jurusan          ||"<<"Angkatan||"<<endl;
+                            cout<<"==========================================================\n";
+                            while(Q != NULL)
+                            {
+                                if(info_Child(buku(Q)).idBuku == id){
+                                    cout<<"||"<<setiosflags(ios::left)<<setw(15)<<info_Parent(mahasiswa(Q)).NIM<<"||"
+                                        <<setiosflags(ios::left)<<setw(27)<<info_Parent(mahasiswa(Q)).jurusan<<"||"
+                                        <<setiosflags(ios::left)<<setw(8)<<info_Parent(mahasiswa(Q)).angkatan<<"||"<<endl;
+                                }
+                                Q = next_Relasi(Q);
+                            }
+                            cout<<"=========================================================="<<endl;
+                        }else{
+                            cout<<"Data Peminjaman Tidak Ditemukan"<<endl;
+                        }
+                    }
                 }
-                address_relasi P = findElmRelasi(L3, ID, idBuku);
-                while(P == NULL)
+                break;
+            }
+            case 9 :
+            {
+                if (first_parent(L1)==NULL)
                 {
-                    cout<<" Data tidak ditemukan dalam data peminjaman"<<endl;
-                    cout<<" Masukkan NIM         :";
-                    cin>>ID;
-                    cout<<" Masukkan ID Buku     : ";
-                    cin>>idBuku;
-                    P = findElmRelasi(L3, ID, idBuku);
-                }
-                if(P == first_relasi(L3))
-                {
-                    deleteFirstRelasi(L3, P);
-                }
-                else if(P == last_relasi(L3))
-                {
-                    deleteLastRelasi(L3, P);
+                    cout<<"List Kosong";
                 }
                 else
                 {
-                    deleteAfterRelasi(L3, prev_Relasi(P), P);
-                }
-                cout<<endl;
-                cout<<"==============BUKU TELAH DIKEMBALIKAN===================="<<endl;
-            }
-            break;
-        }
-        case 7 :
-        {
-            printInfoRelasi(L3);
-            break;
-        }
-        case 8 :
-        {
-                int pilih;
-                cout<<"Untuk melihat buku yang dipinjam mahasiswa tertentu silahkan pilih 1,\n"
-                    <<"Untuk mellihat daftar peminjam buku tertentu silahkan pilih 2\n"<<"\n";
-                cout<<"1. Cari dengan NIM"<<endl;
-                cout<<"2. Cari dengan ID Buku"<<endl;
-                cout<<"Choose Menu : ";
-                cin>>pilih;
-                if(pilih == 1){
-                    int nim;
-                    cout<<"Masukkan NIM : ";
-                    cin>>nim;
-                    address_parent P = findElmParent(L1, nim);
-                    address_relasi Q = findElmRelasiParent(L3, P);
-                    if(Q != NULL){
-                        cout<<"=================================================================="<<endl;
-                        cout<<"||                              DATA BUKU                       ||"<<endl;
-                        cout<<"=================================================================="<<endl;
-                        cout<<"||  ID Buku  ||"<<"             Judul Buku            ||"<<"Tahun Terbit||"<<endl;
-                        cout<<"==================================================================\n";
-                        Q = first_relasi(L3);
-                        while(Q != NULL)
-                        {
-                            if(info_Parent(mahasiswa(Q)).NIM == nim){
-                                cout<<"||"<<setiosflags(ios::left)<<setw(11)<<info_Child(buku(Q)).idBuku<<"||"
-                                <<setiosflags(ios::left)<<setw(35)<<info_Child(buku(Q)).judulBuku<<"||"
-                                <<setiosflags(ios::left)<<setw(12)<<info_Child(buku(Q)).tahun<<"||"<<endl;
-                            }
-                            Q = next_Relasi(Q);
-                        }
-                        cout<<"=================================================================="<<endl;
-                    }else{
-                        cout<<"Data Tidak Ditemukan"<<endl;
-                    }
-                }else if(pilih == 2){
                     int id;
-                    cout<<"Masukkan ID Buku: ";
+                    cout<<"==========MENGHAPUS DATA MAHASISWA=========="<<endl;
+                    cout<<" Masukkan NIM : ";
                     cin>>id;
-                    address_child R = findElmChild(L2, id);
-                    address_relasi Q = findElmRelasiChild(L3, R);
-                    if(Q != NULL){
-                        cout<<"=========================================================="<<endl;
-                        cout<<"||                    DATA MAHASISWA                    ||"<<endl;
-                        cout<<"=========================================================="<<endl;
-                        cout<<"||     NIM       ||"<<"          Jurusan          ||"<<"Angkatan||"<<endl;
-                        cout<<"==========================================================\n";
-                        while(Q != NULL)
-                        {
-                            if(info_Child(buku(Q)).idBuku == id){
-                                cout<<"||"<<setiosflags(ios::left)<<setw(15)<<info_Parent(mahasiswa(Q)).NIM<<"||"
-                                    <<setiosflags(ios::left)<<setw(27)<<info_Parent(mahasiswa(Q)).jurusan<<"||"
-                                    <<setiosflags(ios::left)<<setw(8)<<info_Parent(mahasiswa(Q)).angkatan<<"||"<<endl;
-                            }
-                            Q = next_Relasi(Q);
-                        }
-                        cout<<"=========================================================="<<endl;
-                    }else{
-                        cout<<"Data Tidak Ditemukan"<<endl;
+                    address_parent P = findElmParent(L1, id);
+                    address_relasi Q = findElmRelasiParent(L3, P);
+                    if(Q != NULL)
+                    {
+                        cout<<"===Masih Ada Buku yang Belum Dikembalikan==="<<endl;
+                    }else if(P==NULL){
+                        cout<<"NIM tidak ditemukan \n";
                     }
-            break;
-        }
-        case 9 :
-        {
-            if (first_parent(L1)==NULL)
-            {
-                cout<<"List Kosong";
+                    else
+                    {
+                        deleteParent(L1, P);
+                        cout<<"=============DATA TELAH DIHAPUS============="<<endl;
+                    }
+                }
+                break;
             }
-            else
+            case 10 :
             {
-                int id;
-                cout<<"==========MENGHAPUS DATA MAHASISWA=========="<<endl;
-                cout<<" Masukkan NIM : ";
-                cin>>id;
-                address_parent P = findElmParent(L1, id);
-                address_relasi Q = findElmRelasiParent(L3, P);
-                if(Q != NULL)
+                if(first_child(L2)==NULL)
                 {
-                    cout<<"===Masih Ada Buku yang Belum Dikembalikan==="<<endl;
+                    cout<<"List Kosong";
                 }
                 else
                 {
-                    deleteParent(L1, P);
-                    cout<<"=============DATA TELAH DIHAPUS============="<<endl;
+                    int idBuku;
+                    cout<<"==============MENGHAPUS DATA BUKU==============="<<endl;
+                    cout<<" Masukkan ID Buku : ";
+                    cin>>idBuku;
+                    address_child P = findElmChild(L2, idBuku);
+                    address_relasi Q = findElmRelasiChild(L3, P);
+                    if(Q != NULL)
+                    {
+                        cout<<"=====Masih Ada Buku yang Belum Dikembalikan====="<<endl;
+                    }else if(P==NULL){
+                        cout<<"ID Buku tidak ditemukan \n";
+                    }
+                    else
+                    {
+                        deleteChild(L2, P);
+                        cout<<"=============DATA BUKU TELAH DIHAPUS============"<<endl;
+                    }
                 }
+                break;
             }
-            break;
-        }
-        case 10 :
-        {
-            if(first_child(L2)==NULL)
+            case 11 :
             {
-                cout<<"List Kosong";
+                int totBuku = totalBuku(L2);
+                cout<<"Total Jenis Buku: "<<totBuku;
+                break;
             }
-            else
+            case 12 :
             {
-                int idBuku;
-                cout<<"==============MENGHAPUS DATA BUKU==============="<<endl;
-                cout<<" Masukkan ID Buku : ";
-                cin>>idBuku;
-                address_child P = findElmChild(L2, idBuku);
-                address_relasi Q = findElmRelasiChild(L3, P);
-                if(Q != NULL)
-                {
-                    cout<<"=====Masih Ada Buku yang Belum Dikembalikan====="<<endl;
-                }
-                else
-                {
-                    deleteChild(L2, P);
-                    cout<<"=============DATA BUKU TELAH DIHAPUS============"<<endl;
-                }
+                int mhsw = totalMahasiswa(L1);
+                cout<<"Total Mahasiswa: "<<mhsw;
+                break;
             }
-            break;
-        }
-        case 11 :
-        {
-            int totBuku = totalBuku(L2);
-            cout<<"Total Jenis Buku: "<<totBuku;
-            break;
-        }
-        case 12 :
-        {
-            int mhsw = totalMahasiswa(L1);
-            cout<<"Total Mahasiswa: "<<mhsw;
-            break;
-        }
-        case 13:
-        {
-            int sum = totalPeminjaman(L3);
-            cout<<"Total peminjaman : "<<sum<<endl;
-            break;
-        }
-        }
+            case 13:
+            {
+                int sum = totalPeminjaman(L3);
+                cout<<"Total peminjaman : "<<sum<<endl;
+                break;
+            }
         }
         cout<<endl;
         system("PAUSE");
