@@ -4,10 +4,12 @@
 #include <iomanip>
 
 void createListChild(List_child &L){
+//MAYANG SARI (1301194227)
     first_child(L)=NULL;
 }
 
 address_child createElmChild(int idBuku, string judulBuku, int tahun){
+//MAYANG SARI (1301194227)
     address_child P;
     P = new elmlist_child;
     info_Child(P).idBuku = idBuku;
@@ -19,6 +21,7 @@ address_child createElmChild(int idBuku, string judulBuku, int tahun){
 }
 
 void insertFirstChild(List_child &L, address_child P){
+//MAYANG SARI (1301194227)
     if (first_child(L)==NULL){
         first_child(L)=P;
         next_Child(first_child(L))=P;
@@ -33,6 +36,7 @@ void insertFirstChild(List_child &L, address_child P){
 }
 
 void insertLastChild(List_child &L, address_child P){
+//MAYANG SARI (1301194227)
         next_Child(prev_Child(first_child(L)))=P;
         prev_Child(P)=prev_Child(first_child(L));
         next_Child(P)=first_child(L);
@@ -41,6 +45,7 @@ void insertLastChild(List_child &L, address_child P){
 }
 
 void insertAfterChild(List_child &L, address_child Prec, address_child P){
+//MAYANG SARI (1301194227)
         next_Child(P)=next_Child(Prec);
         prev_Child(P)=Prec;
         next_Child(Prec)=P;
@@ -48,6 +53,7 @@ void insertAfterChild(List_child &L, address_child Prec, address_child P){
 }
 
 void insertSortChild(List_child &L, address_child P){
+//AZIZAH CAHYA KEMILA (1301194103)
     if(first_child(L) == NULL || info_Child(P).idBuku <= info_Child(first_child(L)).idBuku){
         insertFirstChild(L, P);
     }else if(info_Child(P).idBuku  >= info_Child(prev_Child(first_child(L))).idBuku ){
@@ -62,6 +68,7 @@ void insertSortChild(List_child &L, address_child P){
 }
 
 void deleteFirstChild(List_child &L, address_child &P){
+//MAYANG SARI (1301194227)
     P = first_child(L);
     if(first_child(L) == NULL){
         cout<<"List is empty"<<endl;
@@ -79,6 +86,7 @@ void deleteFirstChild(List_child &L, address_child &P){
 }
 
 void deleteLastChild(List_child &L, address_child &P){
+//MAYANG SARI (1301194227)
     P = prev_Child(first_child(L));
         next_Child(prev_Child(P))=first_child(L);
         prev_Child(first_child(L))=prev_Child(P);
@@ -88,6 +96,7 @@ void deleteLastChild(List_child &L, address_child &P){
 }
 
 void deleteAfterChild(List_child &L, address_child Prec, address_child &P){
+//MAYANG SARI (1301194227)
     P=next_Child(Prec);
         next_Child(Prec)=next_Child(P);
         prev_Child(next_Child(P))=Prec;
@@ -97,6 +106,7 @@ void deleteAfterChild(List_child &L, address_child Prec, address_child &P){
 }
 
 void deleteChild(List_child &L, address_child P){
+//MAYANG SARI (1301194227)
     if(first_child(L) == NULL){
         cout<<"List is empty"<<endl;
     }else if(P == first_child(L)){
@@ -110,6 +120,7 @@ void deleteChild(List_child &L, address_child P){
 }
 
 void printInfoChild(List_child L){
+//AZIZAH CAHYA KEMILA (1301194103)
     address_child P = first_child(L);
     if (P == NULL){
         cout<<"List Kosong \n";
@@ -132,6 +143,7 @@ void printInfoChild(List_child L){
 }
 
 address_child findElmChild(List_child &L, int id){
+//MAYANG SARI (1301194227)
     address_child P = first_child(L);
     if(P != NULL){
         do{
@@ -147,6 +159,7 @@ address_child findElmChild(List_child &L, int id){
 }
 
 int totalBuku(List_child L){
+//MAYANG SARI (1301194227)
     int i = 0;
     address_child P = first_child(L);
     if (P!=NULL){

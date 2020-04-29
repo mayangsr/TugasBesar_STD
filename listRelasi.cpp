@@ -1,4 +1,3 @@
-//double
 #include <iostream>
 #include <stdio.h>
 #include <iomanip>
@@ -7,12 +6,14 @@
 using namespace std;
 
 void createListRelasi(List_Relasi &L)
+//AZIZAH CAHYA KEMILA (1301194103)
 {
     first_relasi(L) = NULL;
     last_relasi(L) = NULL;
 }
 
 address_relasi createElmRelasi(address_parent Q, address_child R)
+//AZIZAH CAHYA KEMILA (1301194103)
 {
     address_relasi P;
     P = new elmList_relasi;
@@ -25,6 +26,7 @@ address_relasi createElmRelasi(address_parent Q, address_child R)
 }
 
 void insertRelasi(List_Relasi &L, address_relasi R)
+//AZIZAH CAHYA KEMILA (1301194103)
 {
     if(first_relasi(L) == NULL)
     {
@@ -40,6 +42,7 @@ void insertRelasi(List_Relasi &L, address_relasi R)
 }
 
 void deleteFirstRelasi(List_Relasi &L, address_relasi P)
+//AZIZAH CAHYA KEMILA (1301194103)
 {
     P = first_relasi(L);
     mahasiswa(P) = NULL;
@@ -59,6 +62,7 @@ void deleteFirstRelasi(List_Relasi &L, address_relasi P)
 }
 
 void deleteLastRelasi(List_Relasi &L, address_relasi P)
+//AZIZAH CAHYA KEMILA (1301194103)
 {
     P = last_relasi(L);
     mahasiswa(P) = NULL;
@@ -77,6 +81,7 @@ void deleteLastRelasi(List_Relasi &L, address_relasi P)
 }
 
 void deleteAfterRelasi(List_Relasi &L, address_relasi Prec, address_relasi P)
+//AZIZAH CAHYA KEMILA (1301194103)
 {
     P = next_Relasi(Prec);
     mahasiswa(P) = NULL;
@@ -96,6 +101,7 @@ void deleteAfterRelasi(List_Relasi &L, address_relasi Prec, address_relasi P)
 }
 
 void printInfoRelasi(List_Relasi L)
+//AZIZAH CAHYA KEMILA (1301194103)
 {
     address_relasi P = first_relasi(L);
     if(first_relasi(L)==NULL)
@@ -126,6 +132,7 @@ void printInfoRelasi(List_Relasi L)
 
 
 address_relasi findElmRelasi(List_Relasi L, int nim, int idBuku)
+//AZIZAH CAHYA KEMILA (1301194103)
 {
     address_relasi P = first_relasi(L);
     while(P != NULL && (info_Parent(mahasiswa(P)).NIM != nim || info_Child(buku(P)).idBuku != idBuku))
@@ -136,6 +143,7 @@ address_relasi findElmRelasi(List_Relasi L, int nim, int idBuku)
 }
 
 address_relasi findElmRelasiParent(List_Relasi L,address_parent P)
+//AZIZAH CAHYA KEMILA (1301194103)
 {
     address_relasi Q = first_relasi(L);
     while(Q != NULL && mahasiswa(Q) != P)
@@ -146,6 +154,7 @@ address_relasi findElmRelasiParent(List_Relasi L,address_parent P)
 }
 
 address_relasi findElmRelasiChild(List_Relasi L,address_child P)
+//AZIZAH CAHYA KEMILA (1301194103)
 {
     address_relasi Q = first_relasi(L);
     while(Q != NULL && buku(Q) != P)
@@ -157,6 +166,7 @@ address_relasi findElmRelasiChild(List_Relasi L,address_child P)
 
 
 int totalPeminjaman(List_Relasi L)
+//MAYANG SARI (1301194227)
 {
     address_relasi P = first_relasi(L);
     int i = 0;

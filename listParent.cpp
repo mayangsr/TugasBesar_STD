@@ -1,14 +1,15 @@
-//single
 #include "listParent.h"
 #include <stdio.h>
 #include <iomanip>
 
 void createListParent(List_parent &L){
+//MAYANG SARI (1301194227)
     first_parent(L)=NULL;
     last_parent(L)=NULL;
 }
 
 address_parent createElmParent(int id, string jurusan, int year){
+//MAYANG SARI (1301194227)
     address_parent P;
     P = new elmlist_parent;
     info_Parent(P).NIM = id;
@@ -19,6 +20,7 @@ address_parent createElmParent(int id, string jurusan, int year){
 }
 
 void insertFirstParent(List_parent &L, address_parent P){
+//MAYANG SARI (1301194227)
     if(first_parent(L) == NULL){
         first_parent(L) = P;
         last_parent(L) = P;
@@ -29,11 +31,13 @@ void insertFirstParent(List_parent &L, address_parent P){
  }
 
 void insertAfterParent(List_parent &L, address_parent Prec, address_parent P){
+//MAYANG SARI (1301194227)
     next_Parent(P)=next_Parent(Prec);
     next_Parent(Prec)=P;
 }
 
 void insertSortParent(List_parent &L, address_parent P){
+//AZIZAH CAHYA KEMILA (1301194103)
     if(first_parent(L) == NULL || info_Parent(P).NIM <= info_Parent(first_parent(L)).NIM){
         insertFirstParent(L, P);
     }else if(info_Parent(P).NIM > info_Parent(last_parent(L)).NIM){
@@ -48,12 +52,14 @@ void insertSortParent(List_parent &L, address_parent P){
 }
 
 void insertLastParent(List_parent &L, address_parent P){
+//MAYANG SARI (1301194227)
         next_Parent(last_parent(L))=P;
         last_parent(L)=P;
 
 }
 
 void deleteFirstParent(List_parent &L, address_parent &P){
+//MAYANG SARI (1301194227)
     P=first_parent(L);
     if (first_parent(L)==last_parent(L)){
         first_parent(L)=NULL;
@@ -65,6 +71,7 @@ void deleteFirstParent(List_parent &L, address_parent &P){
 }
 
 void deleteLastParent(List_parent &L, address_parent &P){
+//MAYANG SARI (1301194227)
     P=last_parent(L);
         address_parent Q = first_parent(L);
         while (next_Parent(Q)!=last_parent(L)){
@@ -76,12 +83,14 @@ void deleteLastParent(List_parent &L, address_parent &P){
 }
 
 void deleteAfterParent(List_parent &L, address_parent Prec, address_parent &P){
+//MAYANG SARI (1301194227)
         P=next_Parent(Prec);
         next_Parent(Prec)=next_Parent(P);
         next_Parent(P)=NULL;
 }
 
 void deleteParent(List_parent &L, address_parent P){
+//MAYANG SARI (1301194227)
     if(P == first_parent(L)){
         deleteFirstParent(L, P);
     }else if(P == last_parent(L)){
@@ -97,6 +106,7 @@ void deleteParent(List_parent &L, address_parent P){
 }
 
 void printInfoParent(List_parent L){
+//AZIZAH CAHYA KEMILA (1301194103)
     address_parent P = first_parent(L);
     if (P==NULL){
         cout<<"List Kosong\n";
@@ -118,6 +128,7 @@ void printInfoParent(List_parent L){
 }
 
 address_parent findElmParent(List_parent &L, int ID){
+//MAYANG SARI (1301194227)
     address_parent P = first_parent(L);
     while (P!=NULL && info_Parent(P).NIM!=ID){
         P=next_Parent(P);
@@ -126,6 +137,7 @@ address_parent findElmParent(List_parent &L, int ID){
 }
 
 int totalMahasiswa(List_parent L){
+//MAYANG SARI (1301194227)
     address_parent P = first_parent(L);
     int i = 0;
     while (P!=NULL){

@@ -9,6 +9,7 @@ using namespace std;
 
 int main()
 {
+    //AZIZAH CAHYA KEMILA(1301194103)
     int pilih;
     List_parent L1;
     createListParent(L1);
@@ -40,7 +41,6 @@ int main()
         {
             case 1:
             {
-                /**input jurusan sama judul buku bug, bisa lgsg lanjot ke yg selanjutnya**/
                 int id, year;
                 string jurusan;
                 cout<<"=================INPUT DATA MAHASISWA==============="<<endl;
@@ -189,10 +189,10 @@ int main()
                             {
                                 deleteAfterRelasi(L3, prev_Relasi(P), P);
                             }
-                            cout<<endl;
-                            cout<<"==============BUKU TELAH DIKEMBALIKAN================"<<endl;
                         }
                     }
+                    cout<<endl;
+                    cout<<"==============BUKU TELAH DIKEMBALIKAN==============="<<endl;
                 }
                 break;
             }
@@ -280,6 +280,7 @@ int main()
                     cout<<"==========MENGHAPUS DATA MAHASISWA=========="<<endl;
                     cout<<" Masukkan NIM : ";
                     cin>>id;
+                    cout<<endl;
                     address_parent P = findElmParent(L1, id);
                     address_relasi Q = findElmRelasiParent(L3, P);
                     if(Q != NULL)
@@ -308,6 +309,7 @@ int main()
                     cout<<"==============MENGHAPUS DATA BUKU==============="<<endl;
                     cout<<" Masukkan ID Buku : ";
                     cin>>idBuku;
+                    cout<<endl;
                     address_child P = findElmChild(L2, idBuku);
                     address_relasi Q = findElmRelasiChild(L3, P);
                     if(Q != NULL)
@@ -330,6 +332,8 @@ int main()
                 cout<<"Total Jenis Buku: "<<totBuku;
                 break;
             }
+            //BATAS MAIN.CPP YANG DIKERJAKAN OLEH AZIZAH CAHYA KEMILA (1301194103)
+            //MAYANG SARI (1301194227)
             case 12 :
             {
                 int mhsw = totalMahasiswa(L1);
@@ -342,10 +346,14 @@ int main()
                 cout<<"Total peminjaman : "<<sum<<endl;
                 break;
             }
+            //BATAS MAIN.CPP YANG DIKERJAKAN OLEH MAYANG SARI (1301194103)
         }
+        //AZIZAH CAHYA KEMILA (1301194103)
         cout<<endl;
         system("PAUSE");
         system("CLS");
+
     }
     return 0;
 }
+

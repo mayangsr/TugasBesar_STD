@@ -1,3 +1,5 @@
+//Pembuatan header untuk listParent dikerjakan oleh MAYANG SARI (1301194227)
+
 #ifndef LISTPARENT_H_INCLUDED
 #define LISTPARENT_H_INCLUDED
 #include<iostream>
