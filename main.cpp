@@ -66,7 +66,6 @@ int main()
             }
             case 2:
             {
-                //judul buku bug
                 int idBuku, tahunBuku;
                 string judul;
                 cout<<"=================INPUT DATA BUKU===================="<<endl;
@@ -102,13 +101,13 @@ int main()
             }
             case 5 :
             {
-                if(first_child(L2)==NULL &&first_parent(L1)==NULL){
-                    cout<<"List Kosong";
+                if(first_child(L2)==NULL && first_parent(L1)==NULL){
+                    cout<<" List Mahasiswa dan Buku Kosong";
                 }else if(first_parent(L1)==NULL){
-                    cout<<"Daftar NIM kosong";
+                    cout<<" List Mahasiswa Kosong";
                 }else if (first_child(L2)==NULL )
                 {
-                    cout<<"Daftar ID Buku Kosong";
+                    cout<<"List Buku Buku Kosong";
                 }
                 else
                 {
@@ -120,8 +119,8 @@ int main()
                     address_parent Q = findElmParent(L1, ID);
                     if(Q==NULL)
                     {
-                        cout<<"NIM tidak ditemukan \n";
-                        cout<<"!!!!!!!TIDAK DAPAT MEMINJAM BUKU!!!!!!!"<<endl;
+                        cout<<" NIM tidak ditemukan \n";
+                        cout<<" !!!!!!!TIDAK DAPAT MEMINJAM BUKU!!!!!!!"<<endl;
                     }else{
                         cout<<" Masukkan ID Buku     : ";
                         cin>>idBuku;
@@ -129,7 +128,7 @@ int main()
                         if (R == NULL)
                         {
                             cout<<" ID buku tidak ditemukan\n";
-                            cout<<"!!!!!!!TIDAK DAPAT MEMINJAM BUKU!!!!!!!"<<endl;
+                            cout<<" !!!!!!!TIDAK DAPAT MEMINJAM BUKU!!!!!!!"<<endl;
                         }
                         address_relasi S = findElmRelasi(L3, ID, idBuku);
 
@@ -169,12 +168,12 @@ int main()
                         cout<<" Masukkan ID Buku          : ";
                         cin>>idBuku;
                         address_child R = findElmChild(L2, idBuku);
+                        address_relasi P = findElmRelasi(L3, ID, idBuku);
                         if (R == NULL)
                         {
                             cout<<" ID buku tidak ditemukan\n";
                         }
-                        address_relasi P = findElmRelasi(L3, ID, idBuku);
-                        if(P == NULL)
+                        else if(P == NULL)
                         {
                             cout<<" Data tidak ditemukan dalam data peminjaman"<<endl;
                         }else{
@@ -205,18 +204,18 @@ int main()
             case 8 :
             {
                 if(first_relasi(L3)==NULL){
-                    cout<<"List Peminjaman Kosong \n";
+                    cout<<" List Peminjaman Kosong \n";
                 }else{
                     int pilih;
-                    cout<<"Untuk melihat buku yang dipinjam mahasiswa tertentu silahkan pilih 1,\n"
-                        <<"Untuk mellihat daftar peminjam buku tertentu silahkan pilih 2\n"<<"\n";
-                    cout<<"1. Cari dengan NIM"<<endl;
-                    cout<<"2. Cari dengan ID Buku"<<endl;
-                    cout<<"Choose Menu : ";
+                    cout<<" Untuk melihat buku yang dipinjam mahasiswa tertentu silahkan pilih 1,\n"
+                        <<" Untuk mellihat daftar peminjam buku tertentu silahkan pilih 2\n"<<"\n";
+                    cout<<" 1. Cari dengan NIM"<<endl;
+                    cout<<" 2. Cari dengan ID Buku"<<endl;
+                    cout<<" Choose Menu : ";
                     cin>>pilih;
                     if(pilih == 1){
                         int nim;
-                        cout<<"Masukkan NIM : ";
+                        cout<<" Masukkan NIM : ";
                         cin>>nim;
                         address_parent P = findElmParent(L1, nim);
                         address_relasi Q = findElmRelasiParent(L3, P);
@@ -238,11 +237,11 @@ int main()
                             }
                             cout<<"=================================================================="<<endl;
                         }else{
-                            cout<<"Data Peminjaman Tidak Ditemukan"<<endl;
+                            cout<<" Data Peminjaman Tidak Ditemukan"<<endl;
                         }
                     }else if(pilih == 2){
                         int id;
-                        cout<<"Masukkan ID Buku: ";
+                        cout<<" Masukkan ID Buku: ";
                         cin>>id;
                         address_child R = findElmChild(L2, id);
                         address_relasi Q = findElmRelasiChild(L3, R);
@@ -263,7 +262,7 @@ int main()
                             }
                             cout<<"=========================================================="<<endl;
                         }else{
-                            cout<<"Data Peminjaman Tidak Ditemukan"<<endl;
+                            cout<<" Data Peminjaman Tidak Ditemukan"<<endl;
                         }
                     }
                 }
@@ -273,7 +272,7 @@ int main()
             {
                 if (first_parent(L1)==NULL)
                 {
-                    cout<<"List Kosong";
+                    cout<<" List Kosong";
                 }
                 else
                 {
