@@ -20,8 +20,8 @@
 >- **6. Pengembalian** (_Disconnect_)
 >- **7. Tampilkan Semua Peminjaman** (Menampilkan semua _list_ Relasi)
 >- **8. Cari Data Peminjam dengan ID mahasiswa/buku** (_Find elemen parent/child_)
->- **9. Hapus Data Mahasiswa** (_Delete Parent_)
->- **10. Hapus Data Buku** (_Delete Child_)
+>- **9. Hapus Data Mahasiswa** (_Delete & Deallocate Parent_)
+>- **10. Hapus Data Buku** (_Delete Child & Deallocate_)
 >- **11. Lihat jumlah buku yang dipinjam mahasiswa**(_Case Functionality I_)
 >- **12. Lihat Total (Peminjaman/Mahasiswa/Buku)**(_Case Functionality II_)
 >- **0. Exit**
