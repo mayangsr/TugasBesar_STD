@@ -4,14 +4,14 @@
 >- Tipe **A3**
 ### Disusun oleh:
 >- **Azizah Cahya Kemila (1301194103)**
->- **Mayang Sari (1301194227)**
+>- **Mayang Sari         (1301194227)**
 ### Element List
 >- List Parent (Data mahasiswa **<NIM, Jurusan, Angkatan>**)
 >- List Child (Data buku **<ID Buku, Judul Buku, Tahun Terbit>)**
 >- List Relasi (pointer)
 ### Deskripsi Topik
 >- Membuat program **Perpustakaan (Peminjaman Buku)** 
->- Terdapat 13 menu di dalam program.
+>- Terdapat 12 menu di dalam program.
 >- **1. Masukkan Data Mahasiswa** (_Insert_/memasukkan data mahasiswa)
 >- **2. Masukkan Data Buku** (_Insert_/memasukkan data buku)
 >- **3. Tampilkan List Mahasiswa** (Menampilkan _List_ Mahasiswa yang sudah didaftarkan)
