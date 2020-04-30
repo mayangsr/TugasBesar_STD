@@ -177,4 +177,3 @@ int totalPeminjaman(List_Relasi L)
     }
     return i;
 }
-
