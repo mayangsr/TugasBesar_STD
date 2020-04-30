@@ -84,34 +84,34 @@
 	"listParent.h"
 	"listRelasi.h"
 
-1588169707 source:c:\users\asus\documents\github\tugasbesar_std\listchild.cpp
+1588263271 source:c:\users\asus\documents\github\tugasbesar_std\listchild.cpp
 	"listChild.h"
 	<stdio.h>
 	<iomanip>
 
-1588169707 c:\users\asus\documents\github\tugasbesar_std\listchild.h
+1588263271 c:\users\asus\documents\github\tugasbesar_std\listchild.h
 	<iostream>
 
-1588169707 source:c:\users\asus\documents\github\tugasbesar_std\listparent.cpp
+1588263271 source:c:\users\asus\documents\github\tugasbesar_std\listparent.cpp
 	"listParent.h"
 	<stdio.h>
 	<iomanip>
 
-1588169707 c:\users\asus\documents\github\tugasbesar_std\listparent.h
+1588263271 c:\users\asus\documents\github\tugasbesar_std\listparent.h
 	<iostream>
 
-1588252671 source:c:\users\asus\documents\github\tugasbesar_std\listrelasi.cpp
+1588263271 source:c:\users\asus\documents\github\tugasbesar_std\listrelasi.cpp
 	<iostream>
 	<stdio.h>
 	<iomanip>
 	"listRelasi.h"
 
-1588252671 c:\users\asus\documents\github\tugasbesar_std\listrelasi.h
+1588263271 c:\users\asus\documents\github\tugasbesar_std\listrelasi.h
 	<iostream>
 	"listChild.h"
 	"listParent.h"
 
-1588251684 source:c:\users\asus\documents\github\tugasbesar_std\main.cpp
+1588265470 source:c:\users\asus\documents\github\tugasbesar_std\main.cpp
 	<iostream>
 	<stdlib.h>
 	<iomanip>
