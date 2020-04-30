@@ -6,7 +6,7 @@
 using namespace std;
 
 void createListRelasi(List_Relasi &L)
-//AZIZAH CAHYA KEMILA (1301194103)
+//AZIZAH CAHYA KEMILA(1301194103)
 {
     first_relasi(L) = NULL;
     last_relasi(L) = NULL;

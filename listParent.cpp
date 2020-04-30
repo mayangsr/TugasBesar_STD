@@ -3,7 +3,7 @@
 #include <iomanip>
 
 void createListParent(List_parent &L){
-//MAYANG SARI (1301194227)
+//MAYANG SARI(1301194227)
     first_parent(L)=NULL;
     last_parent(L)=NULL;
 }

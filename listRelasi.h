@@ -1,4 +1,4 @@
-//Pembuatan header untuk listRelasi dikerjakan oleh AZIZAH CAHYA KEMILA (1301194103)
+//Pembuatan header untuk listRelasi dikerjakan oleh AZIZAH CAHYA KEMILA(1301194103)
 
 #ifndef LISTRELASI_H_INCLUDED
 #define LISTRELASI_H_INCLUDED

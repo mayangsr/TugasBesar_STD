@@ -1,4 +1,4 @@
-//Pembuatan header untuk listChild dikerjakan oleh MAYANG SARI (1301194227)
+//Pembuatan header untuk listChild dikerjakan oleh MAYANG SARI(1301194227)
 
 #ifndef LISTCHILD_H_INCLUDED
 #define LISTCHILD_H_INCLUDED

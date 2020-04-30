@@ -1,4 +1,3 @@
-//double circular
 #include "listChild.h"
 #include <stdio.h>
 #include <iomanip>
