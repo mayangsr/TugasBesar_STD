@@ -1,4 +1,4 @@
-# Tugas Besar STD
+# Tugas Besar Struktur Data
 ### Tentang Peminjaman Buku Oleh Mahasiswa di Perpustakaan
 >- Bentuk List **IIIA (M-N)** 
 >- Tipe **A3**
@@ -7,7 +7,7 @@
 >- **Mayang Sari         (1301194227)**
 ### Element List
 >- List Parent (Data mahasiswa **<NIM, Jurusan, Angkatan>**)
->- List Child (Data buku **<ID Buku, Judul Buku, Tahun Terbit>)**
+>- List Child (Data buku **<ID Buku, Judul Buku, Tahun Terbit>**)
 >- List Relasi (pointer)
 ### Deskripsi Topik
 >- Membuat program **Perpustakaan (Peminjaman Buku)** 
@@ -20,8 +20,8 @@
 >- **6. Pengembalian** (_Disconnect_)
 >- **7. Tampilkan Semua Peminjaman** (Menampilkan semua _list_ Relasi)
 >- **8. Cari Data Peminjam dengan ID mahasiswa/buku** (_Find elemen parent/child_)
->- **9. Hapus Data Mahasiswa** 
->- **10. Hapus Data Buku**
+>- **9. Hapus Data Mahasiswa** (_Delete Parent_)
+>- **10. Hapus Data Buku** (_Delete Child_)
 >- **11. Lihat jumlah buku yang dipinjam mahasiswa**(_Case Functionality I_)
 >- **12. Lihat Total (Peminjaman/Mahasiswa/Buku)**(_Case Functionality II_)
 >- **0. Exit**
