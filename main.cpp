@@ -19,7 +19,7 @@ int main()
     createListRelasi(L3);
     while(pilih != 0)
     {
-        cout<<"=======================MENU==========================="<<endl
+        cout<<"=========================MENU========================="<<endl
             <<"|| 1.  Masukkan Data Mahasiswa                      ||"<<endl
             <<"|| 2.  Masukkan Data Buku                           ||"<<endl
             <<"|| 3.  Tampilkan List Mahasiswa                     ||"<<endl
