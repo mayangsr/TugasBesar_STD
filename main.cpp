@@ -19,21 +19,21 @@ int main()
     createListRelasi(L3);
     while(pilih != 0)
     {
-        cout<<"=======================MENU========================="<<endl
-            <<"|| 1.  Masukkan Data Mahasiswa                    ||"<<endl
-            <<"|| 2.  Masukkan Data Buku                         ||"<<endl
-            <<"|| 3.  Tampilkan List Mahasiswa                   ||"<<endl
-            <<"|| 4.  Tampilkan List Buku                        ||"<<endl
-            <<"|| 5.  Peminjaman                                 ||"<<endl
-            <<"|| 6.  Pengembalian                               ||"<<endl
-            <<"|| 7.  Tampilkan Semua Peminjaman                 ||"<<endl
-            <<"|| 8.  Cari Data Peminjam dengan ID mahasiswa/buku||"<<endl
-            <<"|| 9.  Hapus Data Mahasiswa                       ||"<<endl
-            <<"|| 10. Hapus Data Buku                            ||"<<endl
-            <<"|| 11. Lihat jumlah buku yang dipinjam mahasiswa  ||"<<endl
-            <<"|| 12. Lihat Total (Peminjaman/Mahasiswa/Buku)    ||"<<endl
-            <<"|| 0.  Exit                                       ||"<<endl
-            <<"===================================================="<<endl;
+        cout<<"=======================MENU==========================="<<endl
+            <<"|| 1.  Masukkan Data Mahasiswa                      ||"<<endl
+            <<"|| 2.  Masukkan Data Buku                           ||"<<endl
+            <<"|| 3.  Tampilkan List Mahasiswa                     ||"<<endl
+            <<"|| 4.  Tampilkan List Buku                          ||"<<endl
+            <<"|| 5.  Peminjaman                                   ||"<<endl
+            <<"|| 6.  Pengembalian                                 ||"<<endl
+            <<"|| 7.  Tampilkan Semua Peminjaman                   ||"<<endl
+            <<"|| 8.  Cari Data Peminjaman dengan ID mahasiswa/buku||"<<endl
+            <<"|| 9.  Hapus Data Mahasiswa                         ||"<<endl
+            <<"|| 10. Hapus Data Buku                              ||"<<endl
+            <<"|| 11. Lihat jumlah buku yang dipinjam mahasiswa    ||"<<endl
+            <<"|| 12. Lihat Total (Peminjaman/Mahasiswa/Buku)      ||"<<endl
+            <<"|| 0.  Exit                                         ||"<<endl
+            <<"======================================================"<<endl;
         cout<<"Choose Menu : ";
         cin>>pilih;
         switch(pilih)
@@ -42,7 +42,7 @@ int main()
         {
             int id, year;
             string jurusan;
-            cout<<"=================INPUT DATA MAHASISWA==============="<<endl;
+            cout<<"==================INPUT DATA MAHASISWA================"<<endl;
             cout<<"\n NIM      : ";
             cin>>id;
             address_parent Q = findElmParent(L1, id);
@@ -60,14 +60,14 @@ int main()
             cin>>year;
             address_parent P = createElmParent(id, jurusan, year);
             insertSortParent(L1, P);
-            cout<<"\n============DATA MAHASISWA TELAH DIINPUT============"<<endl;
+            cout<<"\n=============DATA MAHASISWA TELAH DIINPUT============="<<endl;
             break;
         }
         case 2:
         {
             int idBuku, tahunBuku;
             string judul;
-            cout<<"=================INPUT DATA BUKU===================="<<endl;
+            cout<<"==================INPUT DATA BUKU====================="<<endl;
             cout<<"\n ID Buku      : ";
             cin>>idBuku;
             address_child Q = findElmChild(L2, idBuku);
@@ -85,7 +85,7 @@ int main()
             cin>>tahunBuku;
             address_child P = createElmChild(idBuku, judul, tahunBuku);
             insertSortChild(L2, P);
-            cout<<"\n=============DATA BUKU TELAH DIINPUT================"<<endl;
+            cout<<"\n==============DATA BUKU TELAH DIINPUT================="<<endl;
             break;
         }
         case 3 :
@@ -115,7 +115,7 @@ int main()
             else
             {
                 int ID, idBuku;
-                cout<<"=================PEMINJAMAN BUKU===================="<<endl;
+                cout<<"==================PEMINJAMAN BUKU====================="<<endl;
                 cout<<endl;
                 cout<<" Masukkan NIM         : ";
                 cin>>ID;
@@ -124,7 +124,7 @@ int main()
                 {
                     cout<<" NIM tidak ditemukan \n";
                     cout<<" !!!!!!!TIDAK DAPAT MEMINJAM BUKU!!!!!!!"<<endl;
-                    cout<<"\n===================================================="<<endl;
+                    cout<<"\n======================================================"<<endl;
                 }
                 else
                 {
@@ -135,21 +135,21 @@ int main()
                     {
                         cout<<" ID buku tidak ditemukan\n";
                         cout<<" !!!!!!!TIDAK DAPAT MEMINJAM BUKU!!!!!!!"<<endl;
-                        cout<<"\n===================================================="<<endl;
+                        cout<<"\n======================================================"<<endl;
                     }
                     address_relasi S = findElmRelasi(L3, ID, idBuku);
 
                     if(S!=NULL)
                     {
                         cout<<" Tidak boleh meminjam buku yang sama\n";
-                        cout<<"\n===================================================="<<endl;
+                        cout<<"\n======================================================"<<endl;
                     }
                     else if(R != NULL && Q != NULL)
                     {
                         address_relasi P = createElmRelasi(Q, R);
                         insertRelasi(L3, P);
                         cout<<endl;
-                        cout<<"==============BUKU BERHASIL DIPINJAM================"<<endl;
+                        cout<<"===============BUKU BERHASIL DIPINJAM================="<<endl;
                     }
                 }
             }
@@ -164,7 +164,7 @@ int main()
             else
             {
                 int ID, idBuku;
-                cout<<"==============PENGEMBALIAN BUKU====================="<<endl;
+                cout<<"===============PENGEMBALIAN BUKU======================"<<endl;
                 cout<<endl;
                 cout<<" Masukkan NIM              : ";
                 cin>>ID;
@@ -172,7 +172,7 @@ int main()
                 if (Q==NULL)
                 {
                     cout<<" NIM tidak ditemukan\n";
-                    cout<<"\n===================================================="<<endl;
+                    cout<<"\n======================================================"<<endl;
                 }
                 else
                 {
@@ -183,12 +183,12 @@ int main()
                     if (R == NULL)
                     {
                         cout<<" ID buku tidak ditemukan\n";
-                        cout<<"\n===================================================="<<endl;
+                        cout<<"\n======================================================"<<endl;
                     }
                     else if(P == NULL)
                     {
                         cout<<" Data tidak ditemukan dalam data peminjaman"<<endl;
-                        cout<<"\n===================================================="<<endl;
+                        cout<<"\n======================================================"<<endl;
                     }
                     else
                     {
@@ -205,7 +205,7 @@ int main()
                             deleteAfterRelasi(L3, prev_Relasi(P), P);
                         }
                         cout<<endl;
-                        cout<<"==============BUKU TELAH DIKEMBALIKAN==============="<<endl;
+                        cout<<"===============BUKU TELAH DIKEMBALIKAN================"<<endl;
                     }
                 }
             }
@@ -306,24 +306,24 @@ int main()
             else
             {
                 int id;
-                cout<<"==============MENGHAPUS DATA MAHASISWA=============="<<endl;
+                cout<<"===============MENGHAPUS DATA MAHASISWA==============="<<endl;
                 cout<<"\n Masukkan NIM : ";
                 cin>>id;
                 address_parent P = findElmParent(L1, id);
                 address_relasi Q = findElmRelasiParent(L3, P);
                 if(Q != NULL)
                 {
-                    cout<<"\n=======Masih Ada Buku yang Belum Dikembalikan======="<<endl;
+                    cout<<"\n========Masih Ada Buku yang Belum Dikembalikan========"<<endl;
                 }
                 else if(P==NULL)
                 {
                     cout<<"NIM tidak ditemukan \n";
-                    cout<<"\n===================================================="<<endl;
+                    cout<<"\n======================================================"<<endl;
                 }
                 else
                 {
                     deleteParent(L1, P);
-                    cout<<"\n=================DATA TELAH DIHAPUS================="<<endl;
+                    cout<<"\n==================DATA TELAH DIHAPUS=================="<<endl;
                 }
             }
             break;
@@ -337,24 +337,24 @@ int main()
             else
             {
                 int idBuku;
-                cout<<"================MENGHAPUS DATA BUKU================="<<endl;
+                cout<<"=================MENGHAPUS DATA BUKU=================="<<endl;
                 cout<<"\n Masukkan ID Buku : ";
                 cin>>idBuku;
                 address_child P = findElmChild(L2, idBuku);
                 address_relasi Q = findElmRelasiChild(L3, P);
                 if(Q != NULL)
                 {
-                    cout<<"\n=======Masih Ada Buku yang Belum Dikembalikan======="<<endl;
+                    cout<<"\n========Masih Ada Buku yang Belum Dikembalikan========"<<endl;
                 }
                 else if(P==NULL)
                 {
-                    cout<<"ID Buku tidak ditemukan \n";
-                    cout<<"\n================================================"<<endl;
+                    cout<<" ID Buku tidak ditemukan \n";
+                    cout<<"\n======================================================"<<endl;
                 }
                 else
                 {
                     deleteChild(L2, P);
-                    cout<<"\n===============DATA BUKU TELAH DIHAPUS=============="<<endl;
+                    cout<<"\n================DATA BUKU TELAH DIHAPUS==============="<<endl;
                 }
             }
             break;
